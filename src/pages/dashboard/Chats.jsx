@@ -19,7 +19,7 @@ import {
 import styled from "@emotion/styled";
 import { ChatList } from "../../data";
 
-import { SimpleBarStyle } from "../../components/Scrollbar";
+// import { SimpleBarStyle } from "../../components/Scrollbar";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {

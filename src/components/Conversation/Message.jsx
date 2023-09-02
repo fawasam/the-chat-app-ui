@@ -25,15 +25,13 @@ const Message = () => {
                   return <DocMsg el={el} />;
                 case "link":
                   return <LinkMsg el={el} />;
-                  break;
+
                 case "reply":
                   return <ReplyMsg el={el} />;
 
                 default:
                   return <TextMsg el={el} />;
-                  break;
               }
-              break;
 
             default:
               return <></>;

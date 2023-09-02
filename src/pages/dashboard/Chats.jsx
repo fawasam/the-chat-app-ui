@@ -7,10 +7,9 @@ import {
   IconButton,
   Stack,
   Typography,
-  alpha,
   useTheme,
 } from "@mui/material";
-import { Faker, faker } from "@faker-js/faker";
+import { faker } from "@faker-js/faker";
 import { ArchiveBox, CircleDashed, MagnifyingGlass } from "phosphor-react";
 import {
   Search,
@@ -61,7 +60,7 @@ const Chats = () => {
         backgroudeColor:
           theme.palette.mode === "light"
             ? "#F8FAFF"
-            : alpha(theme.palette.background.default, 1),
+            : theme.palette.background.paper,
         boxShadow: "0px 0px 2px rgba(0,0,0,0.25)",
       }}
     >

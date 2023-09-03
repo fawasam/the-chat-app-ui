@@ -2,9 +2,15 @@ import {
   Avatar,
   Box,
   Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
   Divider,
   Icon,
   IconButton,
+  Slide,
   Stack,
   Typography,
   useTheme,
@@ -22,12 +28,21 @@ import {
 
 import React from "react";
 import { useDispatch } from "react-redux";
-import { ToggleSidebar } from "../redux/slices/app";
+import { ToggleSidebar, UpdateSidebarType } from "../redux/slices/app";
 import { faker } from "@faker-js/faker";
 import AntSwitch from "./AntSwitch";
 const Contact = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
+  const [openBlock, setOpenBlock] = React.useState(false);
+  const [openDelete, setOpenDelete] = React.useState(false);
+
+  const handleCloseBlock = () => {
+    setOpenBlock(false);
+  };
+  const handleCloseDelete = () => {
+    setOpenDelete(false);
+  };
   return (
     <Box sx={{ width: 320, height: "100vh" }}>
       <Stack sx={{ height: "100%" }}>
@@ -122,7 +137,14 @@ const Contact = () => {
             justifyContent={"space-between"}
           >
             <Typography variant="subtitle2">Media, Links & Docs</Typography>
-            <Button endIcon={<CaretRight />}>401</Button>
+            <Button
+              endIcon={<CaretRight />}
+              onClick={() => {
+                dispatch(UpdateSidebarType("SHARED"));
+              }}
+            >
+              401
+            </Button>
           </Stack>
           <Stack direction={"row"} alignItems={"center"} spacing={2}>
             {[1, 2, 3].map((el) => (
@@ -143,7 +165,11 @@ const Contact = () => {
               <Star size={21} />
               <Typography variant="subtitle2">Starred Messages</Typography>
             </Stack>
-            <IconButton>
+            <IconButton
+              onClick={() => {
+                dispatch(UpdateSidebarType("STARRED"));
+              }}
+            >
               <CaretRight />
             </IconButton>
           </Stack>
@@ -178,10 +204,24 @@ const Contact = () => {
             </Stack>
           </Stack>
           <Stack alignItems={"center"} direction={"row"} spacing={2}>
-            <Button fullWidth variant="outlined" startIcon={<Prohibit />}>
+            <Button
+              onClick={() => {
+                setOpenBlock(true);
+              }}
+              fullWidth
+              variant="outlined"
+              startIcon={<Prohibit />}
+            >
               Block
             </Button>
-            <Button fullWidth variant="outlined" startIcon={<Trash />}>
+            <Button
+              onClick={() => {
+                setOpenDelete(true);
+              }}
+              fullWidth
+              variant="outlined"
+              startIcon={<Trash />}
+            >
               Delete
             </Button>
           </Stack>
@@ -189,8 +229,63 @@ const Contact = () => {
 
         {/* Body end  */}
       </Stack>
+      {openBlock && (
+        <BlockDialog open={openBlock} handleClose={handleCloseBlock} />
+      )}
+      {openDelete && (
+        <DeleteDialog open={openDelete} handleClose={handleCloseDelete} />
+      )}
     </Box>
   );
 };
 
+const BlockDialog = ({ open, handleClose }) => {
+  return (
+    <Dialog
+      open={open}
+      TransitionComponent={Transition}
+      keepMounted
+      onClose={handleClose}
+      aria-describedby="alert-dialog-slide-description"
+    >
+      <DialogTitle>Block this contact</DialogTitle>
+      <DialogContent>
+        <DialogContentText id="alert-dialog-slide-description">
+          Are you sure you want to block this contact?
+        </DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleClose}>Cancel</Button>
+        <Button onClick={handleClose}>yes</Button>
+      </DialogActions>
+    </Dialog>
+  );
+};
+
+const DeleteDialog = ({ open, handleClose }) => {
+  return (
+    <Dialog
+      open={open}
+      TransitionComponent={Transition}
+      keepMounted
+      onClose={handleClose}
+      aria-describedby="alert-dialog-slide-description"
+    >
+      <DialogTitle>Delete this chat</DialogTitle>
+      <DialogContent>
+        <DialogContentText id="alert-dialog-slide-description">
+          Are you sure you want to delete this chat?
+        </DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleClose}>Cancel</Button>
+        <Button onClick={handleClose}>yes</Button>
+      </DialogActions>
+    </Dialog>
+  );
+};
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 export default Contact;

@@ -11,8 +11,11 @@ import {
 import { CaretDown, MagnifyingGlass, Phone, VideoCamera } from "phosphor-react";
 import React from "react";
 import StyledBadge from "../../components/StyledBadge";
+import { useDispatch } from "react-redux";
+import { ToggleSidebar } from "../../redux/slices/app";
 const Header = () => {
   const theme = useTheme();
+  const dispatch = useDispatch();
   return (
     <Box
       p={2}
@@ -27,6 +30,7 @@ const Header = () => {
       }}
     >
       <Stack
+        onClick={() => dispatch(ToggleSidebar())}
         sx={{ width: "100%", height: "100%" }}
         alignItems={"cente"}
         direction={"row"}

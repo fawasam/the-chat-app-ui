@@ -11,7 +11,12 @@ const Conversation = () => {
       {/* chat msg  */}
       <Box
         width={"100%"}
-        sx={{ flexGrow: 1, height: "100%", overflow: "scroll" }}
+        sx={{
+          flexGrow: 1,
+          height: "100%",
+          overflow: "scroll",
+          "&::-webkit-scrollbar": { display: "none" },
+        }}
       >
         <Message menu={true} />
       </Box>

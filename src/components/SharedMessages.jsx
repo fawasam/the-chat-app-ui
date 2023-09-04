@@ -80,6 +80,7 @@ const SharedMessages = () => {
             position: "relative",
             flexGrow: 1,
             overflow: "scroll",
+            "&::-webkit-scrollbar": { display: "none" },
           }}
           p={3}
           spacing={value === 1 ? 1 : 3}

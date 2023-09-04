@@ -95,7 +95,12 @@ const Chats = () => {
         </Stack>
         <Stack
           direction={"column"}
-          sx={{ flexGrow: 1, overflow: "scroll", height: "100%" }}
+          sx={{
+            flexGrow: 1,
+            overflow: "scroll",
+            height: "100%",
+            "&::-webkit-scrollbar": { display: "none" },
+          }}
           spacing={2}
         >
           {/* <SimpleBarStyle

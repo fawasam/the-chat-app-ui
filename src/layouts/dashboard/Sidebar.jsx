@@ -15,6 +15,7 @@ import { Gear } from "phosphor-react";
 import { faker } from "@faker-js/faker";
 import useSettings from "../../hooks/useSettings";
 import AntSwitch from "../../components/AntSwitch";
+import { Link } from "react-router-dom";
 const Sidebar = () => {
   const [selected, setSelected] = useState(0);
   const theme = useTheme();
@@ -45,16 +46,18 @@ const Sidebar = () => {
         spacing={3}
       >
         <Stack alignItems={"center"} spacing={4}>
-          <Box
-            sx={{
-              backgroundColor: theme.palette.primary.main,
-              height: 64,
-              width: 64,
-              borderRadius: 2.5,
-            }}
-          >
-            <img src={Logo} alt={"Chat App logo"} />
-          </Box>
+          <Link to={"/"}>
+            <Box
+              sx={{
+                backgroundColor: theme.palette.primary.main,
+                height: 64,
+                width: 64,
+                borderRadius: 2.5,
+              }}
+            >
+              <img src={Logo} alt={"Chat App logo"} />
+            </Box>
+          </Link>
           <Stack
             spacing={3}
             alignItems="center"
@@ -108,19 +111,21 @@ const Sidebar = () => {
                 </IconButton>
               </Box>
             ) : (
-              <IconButton
-                onClick={() => setSelected(3)}
-                sx={{
-                  width: "max-content",
+              <Link to={"/settings"}>
+                <IconButton
+                  onClick={() => setSelected(3)}
+                  sx={{
+                    width: "max-content",
 
-                  color:
-                    theme.palette.mode === "light"
-                      ? "#000"
-                      : theme.palette.text.primary,
-                }}
-              >
-                <Gear />
-              </IconButton>
+                    color:
+                      theme.palette.mode === "light"
+                        ? "#000"
+                        : theme.palette.text.primary,
+                  }}
+                >
+                  <Gear />
+                </IconButton>
+              </Link>
             )}
           </Stack>
         </Stack>

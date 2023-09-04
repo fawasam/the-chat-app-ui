@@ -82,6 +82,7 @@ const Contact = () => {
             position: "relative",
             flexGrow: 1,
             overflow: "scroll",
+            "&::-webkit-scrollbar": { display: "none" },
           }}
           p={3}
           spacing={3}

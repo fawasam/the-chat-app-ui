@@ -1,19 +1,14 @@
 import {
-  Avatar,
   Box,
-  Button,
-  Divider,
   Grid,
-  Icon,
   IconButton,
-  Link,
   Stack,
   Tab,
   Tabs,
   Typography,
   useTheme,
 } from "@mui/material";
-import { CaretLeft, X } from "phosphor-react";
+import { CaretLeft } from "phosphor-react";
 import React from "react";
 import { UpdateSidebarType } from "../redux/slices/app";
 import { useDispatch } from "react-redux";

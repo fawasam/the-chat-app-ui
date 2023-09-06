@@ -1,15 +1,5 @@
-import {
-  Avatar,
-  Box,
-  Button,
-  Divider,
-  Icon,
-  IconButton,
-  Stack,
-  Typography,
-  useTheme,
-} from "@mui/material";
-import { CaretLeft, X } from "phosphor-react";
+import { Box, IconButton, Stack, Typography, useTheme } from "@mui/material";
+import { CaretLeft } from "phosphor-react";
 import React from "react";
 import { UpdateSidebarType } from "../redux/slices/app";
 import { useDispatch } from "react-redux";

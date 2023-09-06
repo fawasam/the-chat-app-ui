@@ -8,7 +8,6 @@ import {
   DialogContentText,
   DialogTitle,
   Divider,
-  Icon,
   IconButton,
   Slide,
   Stack,

@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import FormProvider from "../../components/hook-form/FormProvider";
 // form
 import { useForm } from "react-hook-form";
@@ -24,7 +23,7 @@ const ResetPasswordForm = () => {
     reset,
     setError,
     handleSubmit,
-    formState: { errors, isSubmitting, isSubmitSuccessful },
+    formState: { errors },
   } = methods;
 
   const onSubmit = async (data) => {

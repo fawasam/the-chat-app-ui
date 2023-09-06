@@ -21,6 +21,7 @@ import {
 import React, { useState } from "react";
 import { faker } from "@faker-js/faker";
 import Shortcuts from "../../sections/settings/Shortcuts";
+import ThemeDialog from "../../sections/settings/ThemeDialog";
 
 const Settings = () => {
   const theme = useTheme();
@@ -152,6 +153,7 @@ const Settings = () => {
       {openShortcuts && (
         <Shortcuts open={true} handleClose={handleCloseShortcuts} />
       )}
+      {openTheme && <ThemeDialog open={true} handleClose={handleCloseTheme} />}
     </Stack>
   );
 };

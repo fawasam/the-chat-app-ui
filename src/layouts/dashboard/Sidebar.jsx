@@ -75,12 +75,14 @@ const Sidebar = () => {
                     borderRadius: 1.5,
                   }}
                 >
-                  <IconButton
-                    sx={{ width: "max-content", color: "#fff" }}
-                    key={el.index}
-                  >
-                    {el.icon}
-                  </IconButton>
+                  <Link to="/group">
+                    <IconButton
+                      sx={{ width: "max-content", color: "#fff" }}
+                      key={el.index}
+                    >
+                      {el.icon}
+                    </IconButton>
+                  </Link>
                 </Box>
               ) : (
                 <IconButton

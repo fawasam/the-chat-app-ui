@@ -1,16 +1,13 @@
 import { Stack, Typography, Link } from "@mui/material";
 import React from "react";
-import { Navigate, Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import RegisterForm from "../../sections/auth/RegisterForm";
 import AuthSocial from "../../sections/auth/AuthSocial";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 const Register = () => {
-  const { isLoggedIn } = useSelector((state) => state.auth);
+  // const { isLoggedIn } = useSelector((state) => state.auth);
 
-  // if (isLoggedIn) {
-  //   return <Navigate to={"/"} />;
-  // }
   return (
     <div>
       <Stack spacing={2} sx={{ mb: 5, position: "relative" }}>

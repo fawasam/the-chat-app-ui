@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+// import React, { useCallback, useState } from "react";
 import FormProvider from "../../components/hook-form/FormProvider";
 // form
 import { useForm } from "react-hook-form";
@@ -8,7 +8,7 @@ import { Alert, Button, Stack } from "@mui/material";
 import { RHFTextField } from "../../components/hook-form";
 
 const ProfileForm = () => {
-  const [file, setFile] = useState();
+  // const [file, setFile] = useState();
   const LoginSchema = Yup.object().shape({
     name: Yup.string().required("Name is required"),
     about: Yup.string().required("About is required"),
@@ -45,22 +45,22 @@ const ProfileForm = () => {
       });
     }
   };
-  const handleDrop = useCallback(
-    (acceptedFiles) => {
-      const file = acceptedFiles[0];
+  // const handleDrop = useCallback(
+  //   (acceptedFiles) => {
+  //     const file = acceptedFiles[0];
 
-      setFile(file);
+  //     setFile(file);
 
-      const newFile = Object.assign(file, {
-        preview: URL.createObjectURL(file),
-      });
+  //     const newFile = Object.assign(file, {
+  //       preview: URL.createObjectURL(file),
+  //     });
 
-      if (file) {
-        setValue("avatar", newFile, { shouldValidate: true });
-      }
-    },
-    [setValue]
-  );
+  //     if (file) {
+  //       setValue("avatar", newFile, { shouldValidate: true });
+  //     }
+  //   },
+  //   [setValue]
+  // );
 
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>

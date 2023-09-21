@@ -15,7 +15,7 @@ import { RHFTextField } from "../../components/hook-form";
 import { Eye, EyeSlash } from "phosphor-react";
 import { useDispatch } from "react-redux";
 import { NewPassword } from "../../redux/slices/auth";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 const NewPasswordForm = () => {
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();

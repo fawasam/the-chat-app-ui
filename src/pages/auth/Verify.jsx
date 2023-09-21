@@ -1,5 +1,5 @@
-import { Stack, Typography, Link } from "@mui/material";
-import { Link as RouterLink } from "react-router-dom";
+import { Stack, Typography } from "@mui/material";
+
 import VerifyForm from "../../sections/auth/VerifyForm";
 const Verify = () => {
   return (

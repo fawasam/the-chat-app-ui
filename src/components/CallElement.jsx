@@ -11,7 +11,6 @@ import React from "react";
 import StyledBadge from "./StyledBadge";
 import {
   ArrowDownLeft,
-  ArrowDownRight,
   ArrowUpRight,
   Phone,
   VideoCamera,

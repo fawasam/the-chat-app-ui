@@ -1,5 +1,4 @@
 import {
-  Button,
   Dialog,
   DialogContent,
   DialogTitle,
@@ -12,7 +11,7 @@ import {
   SearchIconWrapper,
   StyledInputBase,
 } from "../../components/Search";
-import { MagnifyingGlass, Plus } from "phosphor-react";
+import { MagnifyingGlass } from "phosphor-react";
 import { CallElement } from "../../components/CallElement";
 import { MembersList } from "../../data";
 

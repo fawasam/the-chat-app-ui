@@ -13,10 +13,8 @@ import {
   SearchIconWrapper,
   StyledInputBase,
 } from "../../components/Search";
-import { MagnifyingGlass, Phone, Plus } from "phosphor-react";
-import { CallLogs, ChatList } from "../../data";
-import ChatElement from "../../components/ChatElement";
-import CreateGroup from "../../sections/main/CreateGroup";
+import { MagnifyingGlass, Phone } from "phosphor-react";
+import { CallLogs } from "../../data";
 import { CallLogElement } from "../../components/CallElement";
 import StartCall from "../../sections/main/StartCall";
 const Call = () => {

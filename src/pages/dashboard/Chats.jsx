@@ -1,6 +1,4 @@
 import {
-  Avatar,
-  Badge,
   Box,
   Button,
   Divider,
@@ -16,7 +14,7 @@ import {
   SearchIconWrapper,
   StyledInputBase,
 } from "../../components/Search";
-import styled from "@emotion/styled";
+
 import { ChatList } from "../../data";
 import ChatElement from "../../components/ChatElement";
 

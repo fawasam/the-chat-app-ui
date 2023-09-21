@@ -1,10 +1,16 @@
 import { Stack, Typography, Link } from "@mui/material";
-import { Link as RouterLink } from "react-router-dom";
+import { Navigate, Link as RouterLink } from "react-router-dom";
 import React from "react";
 import { CaretLeft } from "phosphor-react";
 import NewPasswordForm from "../../sections/auth/NewPasswordForm";
+import { useSelector } from "react-redux";
 
 const NewPassword = () => {
+  const { isLoggedIn } = useSelector((state) => state.auth);
+
+  if (isLoggedIn) {
+    return <Navigate to={"/"} />;
+  }
   return (
     <>
       <Stack spacing={2} sx={{ mb: 5, position: "relative" }}>

@@ -13,20 +13,25 @@ import {
 } from "@mui/material";
 import { RHFTextField } from "../../components/hook-form";
 import { Eye, EyeSlash } from "phosphor-react";
+import { useDispatch } from "react-redux";
+import { NewPassword } from "../../redux/slices/auth";
+import { useParams, useSearchParams } from "react-router-dom";
 const NewPasswordForm = () => {
+  const [searchParams] = useSearchParams();
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
 
   const NewPasswordSchema = Yup.object().shape({
-    newPassword: Yup.string()
+    password: Yup.string()
       .required("Password is required")
       .min(6, "Password must be at least 6 characters long"),
-    confirmPassword: Yup.string()
+    passwordConfirm: Yup.string()
       .required("Password is required")
-      .oneOf([Yup.ref("newPassword"), null], "Password must match"),
+      .oneOf([Yup.ref("password"), null], "Password must match"),
   });
   const defaultValues = {
-    newPassword: "",
-    confirmPassword: "",
+    password: "",
+    passwordConfirm: "",
   };
   const methods = useForm({
     resolver: yupResolver(NewPasswordSchema),
@@ -41,9 +46,8 @@ const NewPasswordForm = () => {
 
   const onSubmit = async (data) => {
     try {
-      console.log(data);
       // submit data to backend
-      //   dispatch(LoginUser(data));
+      dispatch(NewPassword({ ...data, token: searchParams.get("token") }));
     } catch (error) {
       console.error(error);
       reset();
@@ -62,7 +66,7 @@ const NewPasswordForm = () => {
         )}
 
         <RHFTextField
-          name="newPassword"
+          name="password"
           label="New Password"
           type={showPassword ? "text" : "password"}
           InputProps={{
@@ -79,7 +83,7 @@ const NewPasswordForm = () => {
           }}
         />
         <RHFTextField
-          name="confirm Password"
+          name="passwordConfirm"
           label="Confirm Password"
           type={showPassword ? "text" : "password"}
           InputProps={{

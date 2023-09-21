@@ -1,10 +1,20 @@
 import { Stack, Typography, Link } from "@mui/material";
-import React from "react";
-import { Link as RouterLink } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Navigate, Link as RouterLink, useNavigate } from "react-router-dom";
 import AuthSocial from "../../sections/auth/AuthSocial";
 import LoginForm from "../../sections/auth/LoginForm";
+import { useSelector } from "react-redux";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { isLoggedIn } = useSelector((state) => state.auth);
+
+  if (isLoggedIn) {
+    return <Navigate to={"/"} />;
+  }
+  // useEffect(() => {
+  //   if (!isLoggedIn) return navigate("/auth/login");
+  // }, [isLoggedIn]);
   return (
     <>
       <Stack spacing={2} sx={{ mb: 2, position: "relative" }}>

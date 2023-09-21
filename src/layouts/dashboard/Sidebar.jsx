@@ -16,7 +16,10 @@ import { faker } from "@faker-js/faker";
 import useSettings from "../../hooks/useSettings";
 import AntSwitch from "../../components/AntSwitch";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { LogoutUser } from "../../redux/slices/auth";
 const Sidebar = () => {
+  const dispatch = useDispatch();
   const [selected, setSelected] = useState(0);
   const theme = useTheme();
   const { onToggleMode } = useSettings();
@@ -75,7 +78,7 @@ const Sidebar = () => {
                     borderRadius: 1.5,
                   }}
                 >
-                  <Link to="/group">
+                  <Link to={el.link}>
                     <IconButton
                       sx={{ width: "max-content", color: "#fff" }}
                       key={el.index}
@@ -85,19 +88,21 @@ const Sidebar = () => {
                   </Link>
                 </Box>
               ) : (
-                <IconButton
-                  onClick={() => setSelected(el.index)}
-                  sx={{
-                    width: "max-content",
-                    color:
-                      theme.palette.mode === "light"
-                        ? "#000"
-                        : theme.palette.text.primary,
-                  }}
-                  key={el.index}
-                >
-                  {el.icon}
-                </IconButton>
+                <Link to={el.link}>
+                  <IconButton
+                    onClick={() => setSelected(el.index)}
+                    sx={{
+                      width: "max-content",
+                      color:
+                        theme.palette.mode === "light"
+                          ? "#000"
+                          : theme.palette.text.primary,
+                    }}
+                    key={el.index}
+                  >
+                    {el.icon}
+                  </IconButton>
+                </Link>
               )
             )}
             <Divider sx={{ width: "48px" }} />
@@ -167,15 +172,25 @@ const Sidebar = () => {
           >
             <Stack spacing={1} px={1}>
               {Profile_Menu.map((el, id) => (
-                <MenuItem onClick={handleClick} key={id}>
+                <MenuItem key={id}>
                   <Stack
-                    sx={{ width: 100 }}
-                    direction={"row"}
-                    alignItems={"center"}
-                    justifyContent={"space-between"}
+                    onClick={() => {
+                      if (id === 2) {
+                        dispatch(LogoutUser());
+                      }
+                    }}
                   >
-                    <span>{el.title}</span>
-                    {el.icon}
+                    <Link to={el.link}>
+                      <Stack
+                        sx={{ width: 100 }}
+                        direction={"row"}
+                        alignItems={"center"}
+                        justifyContent={"space-between"}
+                      >
+                        <span>{el.title}</span>
+                        {el.icon}
+                      </Stack>
+                    </Link>
                   </Stack>
                 </MenuItem>
               ))}

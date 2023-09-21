@@ -24,7 +24,7 @@ const ProfileForm = () => {
   });
   const {
     reset,
-    setValue,
+
     setError,
     handleSubmit,
     formState: { errors },
